@@ -65,6 +65,19 @@ ggplot(cost_data, aes(cost, country_name)) +
 
 ```{r crime plot}
 
+#David can take this one on!
+
+model_data <- crime %>% 
+  mutate(neighborhood_id = relevel(factor(neighborhood_id), ref = "barnum"))
+
+m <- glm(is_crime ~ neighborhood_id, 
+         data = model_data,
+         family = "binomial")
+
+tidied <- broom::tidy(m)
+
+ppoints(20)
+
 
 ```
 
